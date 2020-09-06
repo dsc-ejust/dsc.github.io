@@ -1,0 +1,13 @@
+ErrorDocument 400 http://abdelrahman.works/
+ErrorDocument 401 http://abdelrahman.works/
+ErrorDocument 403 http://abdelrahman.works/
+ErrorDocument 404 http://abdelrahman.works/
+ErrorDocument 500 http://abdelrahman.works/
+ErrorDocument 503 http://abdelrahman.works/
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
